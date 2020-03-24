@@ -1,1 +1,62 @@
+.mainBody{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "header header"
+                         "header header"
+                         "header header"
+                         "column1 column2";
+    grid-gap: 10px;
+    margin: auto;
+    border: 1px solid green;
+    width: 90%;
+    height: 100%;
+    padding: 30px;
+    user-select: none;
+    
+}
 
+.header{
+    grid-area: header;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    background-color: lightgray;
+    border-radius: 10px;
+    height: 90%;
+    width: 90%;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.column1{
+    grid-area: column1;
+    margin-top: 5%;
+    height: 100%;
+    width: 90%;
+    object-fit: cover;
+}
+.column2{
+    grid-area: column2;
+    margin-top: 5%;
+    background-color: lightgray;
+    border-radius: 10px;
+    height: 100%;
+    width: 90%;
+    padding: 10px;
+}
+.mainBody div{
+    display: block;
+    /* centers div inside column 1 */
+    justify-self: center;
+    /* centers txt inside div */
+    align-self: center;
+}
+
+img{
+    height: 90%;
+    width:90%;
+    display: block;
+    margin: auto;
+    background-color: darkgray;
+    border-radius: 10px;
+    object-fit: cover;
+}

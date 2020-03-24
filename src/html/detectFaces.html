@@ -2,13 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0">
-    <title>Document</title>
+    <title>Image analysis</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/detectFaces.css">
+    <script src="../js/detectFaces.js"></script>
 </head>
 <body>
+
+<main class="mainBody">
+    <div class="header" id="title">
+        <input type="search" id="searchTxt" value="" class="txt txt-info" style="width: 50%" required>
+        <input type="button" id="searchBtn" value="search" class="btn btn-info" onClick="takeAction()">
+    </div>
     
-
-
-    <script src="../../src/js/detectFaces.js" type="text/javascript"></script>
+    <div class="column1">
+        <img alt="random image" src="../../res/img/punch.png" id="myImg">
+    </div>
+    
+    <div class="column2">
+        <div class="textField">
+            random text<br>
+            random text<br>
+            random text<br>
+        </div>
+        <hr>
+        <div class="giphy">
+            <img src="" class="gif">
+        </div>
+    </div>
+</main>
 </body>
 </html>
