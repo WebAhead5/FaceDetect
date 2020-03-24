@@ -1,13 +1,81 @@
 
 
-var emotion = "sad" // change once we see Microsoft JSON object
+//console.log("url is: ", url)
+
+
+///GET IP ADDRESS
+
+var ipAddress = ""
+
+  function getIP() {
+    fetch("https://api.ipify.org/?format=json")
+    .then(function(data) {
+      return data.json();
+    })
+    .then(function(IP) {
+      ipAddress = Object.values(IP)
+      var ipDOM = document.querySelector(".ip"); 
+      ipDOM.textContent += ipAddress
+    })
+    .catch(function(error) {
+      console.log(error);
+    })
+  };
+
+  getIP()
+
+
+
+  // USE IP ADRESS TO GET LOCATION DATA
+
+  var location = ""
+
+  function getLocation() {
+    fetch("https://ipapi.co/"+ ipAddress + "/json/")
+    .then(function(data) {
+      return data.json();
+    })
+    .then(function(ipInfo) {
+      var locationDOM = document.querySelector(".location"); 
+      console.log(ipInfo)
+      locationDOM.textContent += ipInfo.city + ", " + ipInfo.country;
+      location = ipInfo.city
+
+    })
+    .catch(function(error) {
+      console.log(error);
+
+    })
+  };
+
+  getLocation()
+
+
+
+//GET WEATHER
+
+
+
+
+
+
+//GET LOCATION IMAGE
+
+
+
+
+
+
+//GET GIPHY GIF
+
+var emotion = "cool" // change once we see Microsoft JSON object
 
 var giphyKey = "bF0nNKQwebanW5ikOpCFyikV40BIDBsk" // Jake's giphy key#
 
 var url = "http://api.giphy.com/v1/gifs/search?q=" + emotion + "&api_key=" +  giphyKey;
-//console.log("url is: ", url)
 
-(function() {
+
+function getGif() {
     fetch(url)
     .then(function(data) {
       return data.json();
@@ -23,26 +91,12 @@ var url = "http://api.giphy.com/v1/gifs/search?q=" + emotion + "&api_key=" +  gi
     .catch(function(error) {
       console.log(error);
     })
-  })();
+  };
+
+  getGif();
 
 
 
-
-
-
-
-// (function () {
-//   var url = "http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC";
-//   fetch(url)
-//   .then(function(gifs) {
-//     var gifDrop = document.querySelector(".gif");
-//     var link = gifs.data[1].images.downsized_medium.url;
-//     gifDrop.src = link;
-//   })
-//   .catch(function(error) {
-//     console.log(error);
-//   })
-// })();
 
 
 
