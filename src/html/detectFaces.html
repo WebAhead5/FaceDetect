@@ -7,28 +7,26 @@
     <link rel="stylesheet" href="../css/detectFaces.css">
     <script src="../js/detectFaces.js"></script>
 </head>
-<body>
+<body onload="showWeather()">
 
 <main class="mainBody">
     <div class="header" id="title">
         <input type="search" id="searchTxt" value="" class="txt txt-info" style="width: 50%" required>
-        <input type="button" id="searchBtn" value="search" class="btn btn-info" onClick="takeAction()">
+        <input type="button" id="searchBtn" value="search" class="btn btn-info" onClick="showWeather()">
     </div>
     
     <div class="column1">
         <img alt="random image" src="../../res/img/punch.png" id="myImg">
     </div>
     
-    <div class="column2">
-        <div class="textField">
-            random text<br>
-            random text<br>
-            random text<br>
-        </div>
-        <hr>
-        <div class="giphy">
-            <img src="" class="gif">
-        </div>
+    <div class="column2" id="contents">
+       <div class="giphy">
+            <img src="../../res/img/punch.png" class="gif" id="conditionIcon">
+        </div><hr>
+        <span id="info1" class="info"> </span><br>
+        <span id="info2" class="info"> </span><br>
+        <span id="info3" class="info"> </span><br>
+        <span id="info4" class="info"> </span>
     </div>
 </main>
 </body>
