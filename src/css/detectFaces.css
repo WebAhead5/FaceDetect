@@ -135,9 +135,9 @@ img{
     }
 
 .mainBody div{
-    display: block;
+    /* display: block;
     height: 100%;
-    width: 90%;
+    width: 90%; */
     /* centers div inside column 1 */
     justify-self: center;
     /* centers txt inside div */
