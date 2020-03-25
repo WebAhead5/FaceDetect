@@ -1,6 +1,6 @@
 # Location Finder
 
-<!-- https://webahead5.github.io/FaceDetect/ -->
+<!-- https://webahead5.github.io/LocationInfo/ -->
 Let's Check the [Website](https://webahead5.github.io/FaceDetect/):heart:
 ---
 The website is built in a way that the weather will be modified according to Your location, So when the user enters the web page the pictures and the weather will be automaticly modified to be his location's.
