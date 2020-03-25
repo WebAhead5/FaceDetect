@@ -112,7 +112,8 @@ img{
     height: 100%;
     width: 95%;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 10px; 
+    contain: content;
 }
 
 .column1{
@@ -123,7 +124,7 @@ img{
     border-radius: 10px;
     padding-top: 20px;
     }
-    
+
 .column2{
     grid-area: column2;
     background-color: lightgray;
