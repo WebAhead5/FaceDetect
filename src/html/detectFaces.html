@@ -5,6 +5,13 @@
     <title>Image analysis</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/detectFaces.css">
+
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+    type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+    type="text/javascript" charset="utf-8"></script>
+
+
     
 </head>
 <body onload="loadLocation()">
@@ -29,8 +36,8 @@
         <span id="info3" class="info"> </span><br>
         <span id="info4" class="info"> </span>
     </div>
-    <div class="bottom" id="bottom">
-       <img alt="random image" src="../../res/img/punch.png" id="map" class="map">
+    <div class="bottom" id="mapContainer"></div>
+     
     </div>
 </main>
 <script src="../js/detectFaces.js"></script>

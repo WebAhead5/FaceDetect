@@ -44,9 +44,9 @@ var city = "London"
   // //   .catch(function(error) {
   // //     console.log(error);
 
-  // //   })
+  // //   })S
   // // };
-  var location = "haifa"
+  var city = "haifa"
 
 
 
@@ -71,6 +71,11 @@ var city = "London"
     console.log("clicked button")
     getIP()
   });
+
+  document.getElementById("mapButton").addEventListener("click", function(){
+    console.log("clicked button")
+    getMap()
+  });
  
   //first website
 
@@ -87,7 +92,40 @@ var Long = 35.058998107910156
 var Lat = 32.72100067138672
 
 
+function getMap() {
+  console.log("GET MAP CALLED")
+      // Initialize the platform object:
+      var platform = new H.service.Platform({
+        'apikey': 'f-3oYNVzXsvGjkldg4CkaCT2Wx46R-jir8pJ7SYVlCQ'
+      });
 
+      // Obtain the default map types from the platform object
+      var maptypes = platform.createDefaultLayers();
+
+      // Instantiate (and display) a map object:
+      var map = new H.Map(
+        document.getElementById('mapContainer'),
+        maptypes.vector.normal.map,
+        {
+          zoom: 10,
+          center: { lng: Long, lat: Lat }
+        });
+
+        var svgMarkup = '<svg width="24" height="24" ' +
+    'xmlns="http://www.w3.org/2000/svg">' +
+    '<rect stroke="white" fill="#1b468d" x="1" y="1" width="22" ' +
+    'height="22" /><text x="12" y="18" font-size="12pt" ' +
+    'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
+    'fill="white">X</text></svg>';
+
+        var icon = new H.map.Icon(svgMarkup),
+        coords = {lat: Lat, lng: Long},
+        marker = new H.map.Marker(coords, {icon: icon});
+
+        map.addObject(marker);
+        map.setCenter(coords);
+
+};
 
 //GET WEATHER
 
