@@ -18,7 +18,7 @@
 
 <main class="mainBody">
     <div class="header" id="title">
-        <input type="search" id="searchTxt" value="" class="txt txt-info" style="width: 50%" required>
+        <input type="search" id="searchTxt" value="" class="txt txt-info" style="width: 50%" placeholder=" ✶ Location Info Web APP ✶ " required>
         <input type="button" id="searchBtn" value="search" class="btn btn-info" onClick="loadLocation()">
     </div>
     
@@ -27,19 +27,24 @@
     </div>
     
     <div class="column2" id="contents">
-       <div class="giphy" style="text-align: center">
-            <img src="../../res/img/punch.png" class="gif" id="conditionIcon">
-            <span id="info0" class="info" style="color: white;position: absolute;margin-top: -40px"> </span>
+       <div class="iconContainer">
+        <span id="info0" class="info1"> </span>
+            <img src="../../res/img/punch.png" class="icon" id="conditionIcon">
+            
         </div><hr>
         <span id="info1" class="info"> </span><br>
         <span id="info2" class="info"> </span><br>
         <span id="info3" class="info"> </span><br>
-        <span id="info4" class="info"> </span>
+        <span id="info4" class="info"> </span><br>
+        <span id="info5" class="info"> </span><br>
+        <span id="info6" class="info"> </span><br>
     
+        </div>
     </div>
-    </div>
-    <div class="bottom" id="mapContainer" style="width: 400px; height: 400px;"></div>
+
+    <div class="bottom" id="mapContainer" style="width: 560px; height: 440px;"></div>
 </main>
+
 <script src="../js/detectFaces.js"></script>
 </body>
 </html>
