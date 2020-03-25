@@ -46,6 +46,7 @@ var city = "London"
 
   // //   })
   // // };
+  var location = "haifa"
 
 
 
