@@ -37,8 +37,8 @@ function showWeather(){
           document.getElementById("info2").innerHTML = "<i>Humidity:</i> " + weatherObj.main.humidity + "%";
             // tempreture converted to F
           document.getElementById("info3").innerHTML = "<i>Current Temp: </i>" + (Math.round(weatherObj.main.temp * (9/5) - 459.67)).toString() + " F (" + Math.round((weatherObj.main.temp - 273.1)) + " C) ";
-          document.getElementById("info4").innerHTML = "<i>Max Temp: </i>" + (Math.round(weatherObj.main.temp_max * (9/5) - 459.67)).toString() + " F (" + Math.round((weatherObj.main.temp - 273.1)) + " C) ";  
-          document.getElementById("info5").innerHTML = "<i>Min Temp: </i>" + (Math.round(weatherObj.main.temp_min * (9/5) - 459.67)).toString() + " F (" + Math.round((weatherObj.main.temp - 273.1)) + " C) ";
+          document.getElementById("info4").innerHTML = "<i>Max Temp: </i>" + (Math.round(weatherObj.main.temp_max * (9/5) - 459.67)).toString() + " F (" + Math.round((weatherObj.main.temp_max - 273.1)) + " C) ";  
+          document.getElementById("info5").innerHTML = "<i>Min Temp: </i>" + (Math.round(weatherObj.main.temp_min * (9/5) - 459.67)).toString() + " F (" + Math.round((weatherObj.main.temp_min - 273.1)) + " C) ";
           //wind speed
           document.getElementById("info6").innerHTML = "<i>Wind speed:<i> " + weatherObj.wind.speed + " m/s";
             //weather icon
