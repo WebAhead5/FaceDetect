@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //location variable
 let city="";
 //Morad: location img key
@@ -15,10 +14,6 @@ function loadLocation(){
     
     locationPic();    
 }
-=======
-// const giphyKey;
-// const url;
->>>>>>> master
 
 function showWeather(){
     //change this to current location when textField is empty or onload
@@ -147,53 +142,5 @@ function takeAction(){
     }
     }
 
-<<<<<<< HEAD
-
-/* var pixaUrl = "https://pixabay.com/api/?key=15724529-195ef5be27b1fe3bf39c5be31&q=haifa&image_type=photo&pretty=true"
-
-    function locationImg(){
-        fetch(pixaUrl)
-        .then(function(data) {
-            return data.json();
-        })
-        .then(function locationEx(location) {
-            var randomId = parseInt(Math.random()*Object.keys(hits).length);  
-            var locationPic = document.getElementById('myImg');
-            var thePic = hits[randomId].previewURL;
-            locationPic.src = thePic;
-        })
-        .catch(function (error) {
-            console.log(error);
-        })();
-    } */
-=======
-//the location var here gonna be used from the ip location data
-function locationPic() {
-  var location = "haifa";
-  var pixaKey = "15724529-195ef5be27b1fe3bf39c5be31&q=";
-  var pixaUrl = "https://pixabay.com/api/?key=" + pixaKey + location + "&image_type=photo&pretty=true" ;
-  console.log(pixaUrl);
-  // https://pixabay.com/api/?key=15724529-195ef5be27b1fe3bf39c5be31&q=haifa&image_type=photo&pretty=true
-  var locPic = document.querySelector(".location");
-  fetch(pixaUrl)
-  .then(function(response){
-      return response.json();
-  })
-  .then(function(pics){
-    var randPic = parseInt(Math.random()*Object.keys(pics.hits).length);
-    console.log(randPic)
-      var picLink = pics.hits[randPic].largeImageURL;
-      locPic.src = picLink;
-  })
-  .catch(function(error){
-      console.log(error);
-      locPic.src = "https://cdn.pixabay.com/photo/2015/03/01/21/44/bart-655318_960_720.png";
-  })
-};
-locationPic();
 
 
-    // var pixaUrl = "https://pixabay.com/api/?key=15724529-195ef5be27b1fe3bf39c5be31&q=haifa&image_type=photo&pretty=true"
-// console.log(pixaUrl)
-
->>>>>>> master
