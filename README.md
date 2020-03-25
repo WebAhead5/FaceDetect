@@ -17,6 +17,15 @@ However, the info will change according the city that you are searching for when
 - GET LOCATION MAP: https://js.api.here.com
 ---
 
+
+### Functionality
+
+Default infomation will be provided based on your current location (based on your IP), and you can type in any City in the search bar to get new information.
+
+
+![alt text](https://i.ibb.co/0VyX4nK/Location-App.png)
+
+
 ### The APIs Work Flow :cyclone:
 
 ---
