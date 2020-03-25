@@ -36,6 +36,9 @@
     
 }
 
+.map {
+}
+
 .column1{
     grid-area: column1;
     height: 100%;
@@ -99,7 +102,8 @@ img{
     text-align: center;
     padding-top: 20px;
     }
-    .bottom{
+
+.bottom{
     grid-area: bottom;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -119,6 +123,7 @@ img{
     border-radius: 10px;
     padding-top: 20px;
     }
+    
 .column2{
     grid-area: column2;
     background-color: lightgray;
@@ -127,8 +132,11 @@ img{
     width: 90%;
     padding: 10px;
     }
+
 .mainBody div{
     display: block;
+    height: 100%;
+    width: 90%;
     /* centers div inside column 1 */
     justify-self: center;
     /* centers txt inside div */
