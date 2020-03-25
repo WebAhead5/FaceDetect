@@ -7,6 +7,14 @@ The website is built in a way that the weather will be modified according to You
 
 However, the info will change according the city that you are searching for whenever a valid city name is inserted to the search bar. 
 
+
+### APIS USED 
+
+- GET USER IP: https://api.ipify.org
+- GET LOCATION FROM IP: http://api.ipstack.com/
+- GET WEATHER INFO: http://api.openweathermap.org
+- GET LOCATION PICTURE: https://api.ipify.org/
+- GET LOCATION MAP: https://js.api.here.com
 ---
 
 ### The APIs Work Flow :cyclone:
