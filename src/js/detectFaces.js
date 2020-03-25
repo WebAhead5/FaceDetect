@@ -70,7 +70,6 @@ function showWeather(){
       getLocation(ipAddress);
        
     })
-    .then()
     .catch(function(error) {
       console.log("ERROR IS:", error);
     })
