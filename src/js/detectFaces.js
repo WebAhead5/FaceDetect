@@ -13,8 +13,7 @@ function loadLocation(){
          getIP();}
      else  {
          showWeather();
-         locationPic();
-         getMap()   }
+         locationPic();}
 }
 
 function showWeather(){
@@ -47,7 +46,11 @@ function showWeather(){
               document.getElementById("conditionIcon").style.backgroundColor = "skyblue" ;
           else
               document.getElementById("conditionIcon").style.backgroundColor = "black";
-            
+        
+          Long = weatherObj.coord.lon;
+          Lat = weatherObj.coord.lat;
+          console.log("location is: ", Lat, Long)
+          getMap()
          // weatherValue=weatherObj.weather[0].value;
          // alert(weatherValue);
         })
@@ -88,7 +91,6 @@ function getLocation(ipAddress) {
       console.log("location is: ", Lat, Long)
       showWeather();
       locationPic();
-      getMap();
       //locationDOM.textContent += ipInfo.region_name + ", " + ipInfo.country_name;
     })
     .catch(function(error) {
@@ -161,6 +163,10 @@ function getMap() {
       // Obtain the default map types from the platform object
       var maptypes = platform.createDefaultLayers();
 
+
+      //delete exisitng map object.
+
+
       // Instantiate (and display) a map object:
       var map = new H.Map(
         document.getElementById('mapContainer'),
@@ -176,13 +182,13 @@ function getMap() {
         'height="22" /><text x="12" y="18" font-size="12pt" ' +
         'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
         'fill="white">X</text></svg>';
-
         var icon = new H.map.Icon(svgMarkup),
         coords = {lat: Lat, lng: Long},
         marker = new H.map.Marker(coords, {icon: icon});
+        console.log(coords)
 
         map.addObject(marker);
-        // map.setCenter(coords);
+        map.setCenter(coords);
 
 };
 
