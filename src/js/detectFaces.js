@@ -40,7 +40,9 @@ function locationPic() {
       return response.json();
   })
   .then(function(pics){
-      var picLink = pics.hits[1].largeImageURL;
+    var randPic = parseInt(Math.random()*Object.keys(pics.hits).length);
+    console.log(randPic)
+      var picLink = pics.hits[randPic].largeImageURL;
       locPic.src = picLink;
   })
   .catch(function(error){
