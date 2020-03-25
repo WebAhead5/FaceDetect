@@ -1,5 +1,3 @@
-# FaceDetect
-
 # Location Finder
 
 <!-- https://webahead5.github.io/FaceDetect/ -->
