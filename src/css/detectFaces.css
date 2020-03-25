@@ -145,7 +145,7 @@ img{
 }
 
 img{
-    height: 90%;
+    height: auto;
     width:90%;
     display: block;
     margin: auto;
