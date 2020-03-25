@@ -123,7 +123,7 @@ function getMap() {
         marker = new H.map.Marker(coords, {icon: icon});
 
         map.addObject(marker);
-        map.setCenter(coords);
+        //map.setCenter(coords);
 
 };
 
