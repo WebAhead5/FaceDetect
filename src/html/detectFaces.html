@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="../css/detectFaces.css">
     <script src="../js/detectFaces.js"></script>
 </head>
-<body onload="showWeather()">
+<body onload="loadLocation()">
 
 <main class="mainBody">
     <div class="header" id="title">
         <input type="search" id="searchTxt" value="" class="txt txt-info" style="width: 50%" required>
-        <input type="button" id="searchBtn" value="search" class="btn btn-info" onClick="showWeather()">
+        <input type="button" id="searchBtn" value="search" class="btn btn-info" onClick="loadLocation()">
     </div>
     
     <div class="column1">
-        <img alt="random image" src="../../res/img/punch.png" id="myImg">
+        <img alt="random image" src="../../res/img/punch.png" id="myImg" class="location">
     </div>
     
     <div class="column2" id="contents">
@@ -28,6 +28,9 @@
         <span id="info2" class="info"> </span><br>
         <span id="info3" class="info"> </span><br>
         <span id="info4" class="info"> </span>
+    </div>
+    <div class="bottom" id="bottom">
+       <img alt="random image" src="../../res/img/punch.png" id="map" class="map">
     </div>
 </main>
 </body>
