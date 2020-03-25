@@ -7,28 +7,30 @@
     <link rel="stylesheet" href="../css/detectFaces.css">
     
 </head>
-<body>
+<body onload="loadLocation()">
 
 <main class="mainBody">
     <div class="header" id="title">
         <input type="search" id="searchTxt" value="" class="txt txt-info" style="width: 50%" required>
-        <input type="button" id="searchBtn" value="search" class="btn btn-info" onClick="takeAction()">
+        <input type="button" id="searchBtn" value="search" class="btn btn-info" onClick="loadLocation()">
     </div>
     
     <div class="column1">
-        <img alt="random image" src="../../res/img/punch.png" class="location" id="myImg">
+        <img alt="random image" src="../../res/img/punch.png" id="myImg" class="location">
     </div>
     
-    <div class="column2">
-        <div class="textField">
-            random text<br>
-            random text<br>
-            random text<br>
-        </div>
-        <hr>
-        <div class="giphy">
-            <img src="" class="gif">
-        </div>
+    <div class="column2" id="contents">
+       <div class="giphy" style="text-align: center">
+            <img src="../../res/img/punch.png" class="gif" id="conditionIcon">
+            <span id="info0" class="info" style="color: white;position: absolute;margin-top: -40px"> </span>
+        </div><hr>
+        <span id="info1" class="info"> </span><br>
+        <span id="info2" class="info"> </span><br>
+        <span id="info3" class="info"> </span><br>
+        <span id="info4" class="info"> </span>
+    </div>
+    <div class="bottom" id="bottom">
+       <img alt="random image" src="../../res/img/punch.png" id="map" class="map">
     </div>
 </main>
 <script src="../js/detectFaces.js"></script>

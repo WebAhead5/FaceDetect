@@ -2,14 +2,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "header header"
-                         "header header"
-                         "header header"
-                         "column1 column2";
+                         "column1 column2"
+                        "bottom bottom";
     grid-gap: 10px;
     margin: auto;
     border: 1px solid green;
     width: 90%;
-    height: 100%;
+    height: 90%;
     padding: 30px;
     user-select: none;
     
@@ -18,31 +17,116 @@
 .header{
     grid-area: header;
     margin-top: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     background-color: lightgray;
     border-radius: 10px;
     height: 90%;
-    width: 90%;
+    width: 95%;
     text-align: center;
     padding-top: 20px;
+}
+.bottom{
+    grid-area: bottom;
+    margin: auto;
+    background-color: lightgray;
+    border-radius: 10px;
+    height: 50%;
+    width: 95%;
+    padding-top: 10px;
+    
 }
 
 .column1{
     grid-area: column1;
-    margin-top: 5%;
     height: 100%;
     width: 90%;
-    object-fit: cover;
+    background-color: lightgray;
+    border-radius: 10px;
+    padding-top: 10px;
 }
 .column2{
     grid-area: column2;
-    margin-top: 5%;
     background-color: lightgray;
     border-radius: 10px;
     height: 100%;
     width: 90%;
     padding: 10px;
 }
+.mainBody div{
+    display: block;
+    /* centers div inside column 1 */
+    justify-self: center;
+    /* centers txt inside div */
+    align-self: center;
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+img{
+    height: 90%;
+    width:90%;
+    display: block;
+    margin: auto;
+    background-color: darkgray;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+@media screen and (max-width:600px){
+.mainBody{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "header"
+                         "column1"
+                        "column2"
+                            "bottom";
+    grid-gap: 10px;
+    margin: auto;
+    border: 1px solid green;
+    width: 90%;
+    height: 100%;
+    padding: 30px;
+    user-select: none;
+    }
+.header{
+    grid-area: header;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    background-color: lightgray;
+    border-radius: 10px;
+    height: 90%;
+    width: 95%;
+    text-align: center;
+    padding-top: 20px;
+    }
+    .bottom{
+    grid-area: bottom;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: lightgray;
+    border-radius: 10px;
+    height: 100%;
+    width: 95%;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.column1{
+    grid-area: column1;
+    height: 100%;
+    width: 90%;
+    background-color: lightgray;
+    border-radius: 10px;
+    padding-top: 20px;
+    }
+.column2{
+    grid-area: column2;
+    background-color: lightgray;
+    border-radius: 10px;
+    height: 100%;
+    width: 90%;
+    padding: 10px;
+    }
 .mainBody div{
     display: block;
     /* centers div inside column 1 */
@@ -59,4 +143,6 @@ img{
     background-color: darkgray;
     border-radius: 10px;
     object-fit: cover;
+    }
 }
+
