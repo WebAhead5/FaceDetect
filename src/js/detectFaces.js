@@ -22,7 +22,6 @@ function loadLocation(){
 }
 
 function showWeather(){
-    //change this to current location when textField is empty or onload
     //weather url
     var url="http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + weatherMapKey;
     //location image url
@@ -58,14 +57,10 @@ function showWeather(){
           Lat = weatherObj.coord.lat;
           console.log("location is: ", Lat, Long)
           getMap();
-         // weatherValue=weatherObj.weather[0].value;
-         // alert(weatherValue);
+
         })
         .catch(function(error) {
-          // clean info spans
-        for(var i=0;i<=4;i++)
-              document.getElementById("info"+i).innerHTML="";
-              document.getElementById("info1").innerHTML = "city not found!";
+          errorFound(error)
         })
       })();
     
@@ -81,7 +76,7 @@ function showWeather(){
        
     })
     .catch(function(error) {
-      console.log("ERROR IS:", error);
+      errorFound()
     })
   };
 
@@ -97,10 +92,9 @@ function getLocation(ipAddress) {
       console.log("location is: ", Lat, Long)
       showWeather();
       locationPic();
-      //locationDOM.textContent += ipInfo.region_name + ", " + ipInfo.country_name;
     })
     .catch(function(error) {
-      console.log("ERROR IS:", error);
+      errorFound(error)
     })
   }
 
@@ -109,55 +103,27 @@ function locationPic() {
   var pixaKey = "15724529-195ef5be27b1fe3bf39c5be31&q=";
   var pixaUrl = "https://pixabay.com/api/?key=" + pixaKey + city ;
   console.log(pixaUrl);
-  // https://pixabay.com/api/?key=15724529-195ef5be27b1fe3bf39c5be31&q=haifa&image_type=photo&pretty=true
   var locPic = document.querySelector(".location");
   fetch(pixaUrl)
   .then(function(response){
       return response.json();
   })
   .then(function(pics){
-    var randPic = parseInt(Math.random()*Object.keys(pics.hits).length);
-    console.log(randPic)
+    var randPic = parseInt(Math.random()*(Object.keys(pics.hits).length));
+    console.log("random pic index ", randPic)
     var picLink = pics.hits[randPic].largeImageURL;
     locPic.src = picLink;
     console.log(picLink)
   })
   .catch(function(error){
+<<<<<<< HEAD
+    errorFound(error)
+=======
     console.log(error);
     locPic.src = "http://cdn.pixabay.com/photo/2015/03/01/21/44/bart-655318_960_720.png";
+>>>>>>> master
   })
 }
-
-// //Jake's giphy code
-// var giphyKey;
-// var url;
-// function takeAction(){
-//     if(document.getElementById("searchTxt").value == ""){
-//         alert("Enter emotion");
-//     }else{
-//     var emotion = document.getElementById("searchTxt").value;
-    
-//     url = "http://api.giphy.com/v1/gifs/search?q=" + emotion + "&api_key=" +  giphyKey;
-//     console.losg("url is: ", url)
-//     (function() {
-//         fetch(url)
-//         .then(function(data) {
-//           return data.json();
-//         })
-//         .then(function(gifs) {
-//           var randomImage = parseInt(Math.random()*Object.keys(gifs.data).length);
-//           var gifDOM = document.querySelector(".gif"); 
-//           var link = gifs.data[randomImage].images.downsized_medium.url; //grabs gif image from JSON
-//           gifDOM.src = link; //changes DOM src to new link of gif
-//         })
-//         .catch(function(error) {
-//           console.log(error);
-//         })
-//       })();
-//     }
-//     }
-
-
 
 
 function getMap() {
@@ -167,7 +133,6 @@ function getMap() {
       var platform = new H.service.Platform({
         'apikey': 'f-3oYNVzXsvGjkldg4CkaCT2Wx46R-jir8pJ7SYVlCQ'
       });
-
 
       // Obtain the default map types from the platform object
       var maptypes = platform.createDefaultLayers();
@@ -200,4 +165,26 @@ function getMap() {
 };
 
 
+function errorFound(error) {
 
+//ON ERROR
+
+//clear weather info
+  for(var i=0;i<=6;i++) {
+  document.getElementById("info"+i).innerHTML="";}
+//display error message
+  document.getElementById("info1").innerHTML = "<br><br>Sorry! City is not found!";
+
+//set default pics on error
+  document.getElementById("conditionIcon").src="../../res/img/punch.png"
+  document.querySelector(".location").src = "../../res/img/punch.png"
+
+//Console Log Error
+  console.log("ERROR IS:", error);
+
+//Set map to Error message
+
+  document.getElementById('mapContainer').innerHTML = "<i>Error: No map to display - please re-enter city</i>";
+
+
+}
