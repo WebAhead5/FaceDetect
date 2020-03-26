@@ -7,6 +7,11 @@ const pixaBayKey = "15724529-195ef5be27b1fe3bf39c5be31&q=";
 //khaled: weather key
 const weatherMapKey = "2ef6a42fb0c1fbf124ac800524fde470";
 
+function hitIt(event){
+    if (event.keyCode==13)
+        document.getElementById("searchBtn").click();
+}
+
 function loadLocation(){
     city = document.getElementById("searchTxt").value;
     if(city=="") {
@@ -14,11 +19,9 @@ function loadLocation(){
      else  {
          showWeather();
          locationPic();}
-
 }
 
 function showWeather(){
-    //change this to current location when textField is empty or onload
     //weather url
     var url="http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + weatherMapKey;
     //location image url
@@ -36,9 +39,9 @@ function showWeather(){
           document.getElementById("info1").innerHTML = "<b>" + weatherObj.weather[0].description[0].toUpperCase() + weatherObj.weather[0].description.slice(1) + "</b>";
           document.getElementById("info2").innerHTML = "<i>Humidity:</i> " + weatherObj.main.humidity + "%";
             // tempreture converted to F
-          document.getElementById("info3").innerHTML = "<i>Current Temp: </i>" + (Math.round(weatherObj.main.temp * (9/5) - 459.67)).toString() + " F (" + Math.round((weatherObj.main.temp - 273.1)) + " C) ";
-          document.getElementById("info4").innerHTML = "<i>Max Temp: </i>" + (Math.round(weatherObj.main.temp_max * (9/5) - 459.67)).toString() + " F (" + Math.round((weatherObj.main.temp_max - 273.1)) + " C) ";  
-          document.getElementById("info5").innerHTML = "<i>Min Temp: </i>" + (Math.round(weatherObj.main.temp_min * (9/5) - 459.67)).toString() + " F (" + Math.round((weatherObj.main.temp_min - 273.1)) + " C) ";
+          document.getElementById("info3").innerHTML = "<i>Current Temp: </i>" + calcF(weatherObj.main.temp) + " (" + calcC(weatherObj.main.temp) + ")"; 
+          document.getElementById("info4").innerHTML = "<i>Max Temp: </i>" + calcF(weatherObj.main.temp_max) + " (" + calcC(weatherObj.main.temp_max) + ")";  
+          document.getElementById("info5").innerHTML = "<i>Min Temp: </i>" + calcF(weatherObj.main.temp_min) + " (" + calcC(weatherObj.main.temp_min) + ")"; 
           //wind speed
           document.getElementById("info6").innerHTML = "<i>Wind speed:<i> " + weatherObj.wind.speed + " m/s";
             //weather icon
@@ -54,14 +57,10 @@ function showWeather(){
           Lat = weatherObj.coord.lat;
           console.log("location is: ", Lat, Long)
           getMap();
-         // weatherValue=weatherObj.weather[0].value;
-         // alert(weatherValue);
+
         })
         .catch(function(error) {
-          // clean info spans
-        for(var i=0;i<=4;i++)
-              document.getElementById("info"+i).innerHTML="";
-              document.getElementById("info1").innerHTML = "city not found!";
+          errorFound(error)
         })
       })();
     
@@ -77,7 +76,7 @@ function showWeather(){
        
     })
     .catch(function(error) {
-      console.log("ERROR IS:", error);
+      errorFound()
     })
   };
 
@@ -93,10 +92,9 @@ function getLocation(ipAddress) {
       console.log("location is: ", Lat, Long)
       showWeather();
       locationPic();
-      //locationDOM.textContent += ipInfo.region_name + ", " + ipInfo.country_name;
     })
     .catch(function(error) {
-      console.log("ERROR IS:", error);
+      errorFound(error)
     })
   }
 
@@ -105,55 +103,22 @@ function locationPic() {
   var pixaKey = "15724529-195ef5be27b1fe3bf39c5be31&q=";
   var pixaUrl = "https://pixabay.com/api/?key=" + pixaKey + city ;
   console.log(pixaUrl);
-  // https://pixabay.com/api/?key=15724529-195ef5be27b1fe3bf39c5be31&q=haifa&image_type=photo&pretty=true
   var locPic = document.querySelector(".location");
   fetch(pixaUrl)
   .then(function(response){
       return response.json();
   })
   .then(function(pics){
-    var randPic = parseInt(Math.random()*Object.keys(pics.hits).length);
-    console.log(randPic)
+    var randPic = parseInt(Math.random()*(Object.keys(pics.hits).length));
+    console.log("random pic index ", randPic)
     var picLink = pics.hits[randPic].largeImageURL;
     locPic.src = picLink;
     console.log(picLink)
   })
   .catch(function(error){
-    console.log(error);
-    locPic.src = "http://cdn.pixabay.com/photo/2015/03/01/21/44/bart-655318_960_720.png";
+    errorFound(error)
   })
 }
-
-// //Jake's giphy code
-// var giphyKey;
-// var url;
-// function takeAction(){
-//     if(document.getElementById("searchTxt").value == ""){
-//         alert("Enter emotion");
-//     }else{
-//     var emotion = document.getElementById("searchTxt").value;
-    
-//     url = "http://api.giphy.com/v1/gifs/search?q=" + emotion + "&api_key=" +  giphyKey;
-//     console.losg("url is: ", url)
-//     (function() {
-//         fetch(url)
-//         .then(function(data) {
-//           return data.json();
-//         })
-//         .then(function(gifs) {
-//           var randomImage = parseInt(Math.random()*Object.keys(gifs.data).length);
-//           var gifDOM = document.querySelector(".gif"); 
-//           var link = gifs.data[randomImage].images.downsized_medium.url; //grabs gif image from JSON
-//           gifDOM.src = link; //changes DOM src to new link of gif
-//         })
-//         .catch(function(error) {
-//           console.log(error);
-//         })
-//       })();
-//     }
-//     }
-
-
 
 
 function getMap() {
@@ -163,7 +128,6 @@ function getMap() {
       var platform = new H.service.Platform({
         'apikey': 'f-3oYNVzXsvGjkldg4CkaCT2Wx46R-jir8pJ7SYVlCQ'
       });
-
 
       // Obtain the default map types from the platform object
       var maptypes = platform.createDefaultLayers();
@@ -194,6 +158,44 @@ function getMap() {
       
 
 };
+
+
+function errorFound(error) {
+
+//ON ERROR
+
+//clear weather info
+  for(var i=0;i<=6;i++) {
+  document.getElementById("info"+i).innerHTML="";}
+//display error message
+  document.getElementById("info1").innerHTML = "<br><br>Sorry! City is not found!";
+
+//set default pics on error
+  document.getElementById("conditionIcon").src="../../res/img/punch.png"
+  document.querySelector(".location").src = "../../res/img/punch.png"
+
+//Console Log Error
+  console.log("ERROR IS:", error);
+
+//Set map to Error message
+
+  document.getElementById('mapContainer').innerHTML = "<i>Error: No map to display - please re-enter city</i>";
+
+
+}
+
+
+function calcF(temp) {
+
+  return (Math.round(temp * (9/5) - 459.67)).toString() + "°F"
+
+}
+
+function calcC(temp) {
+
+  return  (Math.round(temp - 273.1)) + "°C"
+
+}
 
 
 
