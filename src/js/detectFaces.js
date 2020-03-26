@@ -20,7 +20,7 @@ function loadLocation(){
 function showWeather(){
     //change this to current location when textField is empty or onload
     //weather url
-    var url="http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + weatherMapKey;
+    var url="https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + weatherMapKey;
     //location image url
     var pixaUrl = "https://pixabay.com/api/?key=" + pixaBayKey + city + "&image_type=photo&pretty=true";
     //weather function
@@ -43,7 +43,7 @@ function showWeather(){
           document.getElementById("info6").innerHTML = "<i>Wind speed:<i> " + weatherObj.wind.speed + " m/s";
             //weather icon
           var weatherIcon=weatherObj.weather[0].icon;
-          document.getElementById("conditionIcon").src="http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
+          document.getElementById("conditionIcon").src="https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
             //check icon for day or night
           if(weatherIcon.substring(weatherIcon.length-1)=="d")
               document.getElementById("conditionIcon").style.backgroundColor = "skyblue" ;
@@ -82,7 +82,7 @@ function showWeather(){
   };
 
 function getLocation(ipAddress) {
-    fetch("http://api.ipstack.com/" + ipAddress + "?access_key=ed3444554cc1d141b96877c1e566cded")
+    fetch("https://api.ipstack.com/" + ipAddress + "?access_key=ed3444554cc1d141b96877c1e566cded")
     .then(function(data) {
       return data.json();
     })
