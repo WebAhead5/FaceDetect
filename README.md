@@ -28,7 +28,7 @@ Default infomation will be provided based on your current location (based on you
 
 ### The APIs Work Flow :cyclone:
 
-![The work flow](https://i.imgur.com/RsNoKKQ.png)
+![The work flow](https://i.imgur.com/RavD7Ui.png)
 ---
 ```graphviz
 digraph {
@@ -48,14 +48,17 @@ digraph {
 
   subgraph cluster1 {
      concentrate=true
-    a [label="Location Picture\nAPI"][color=blue] [shape=box]
+    a [label="Map\nAPI"][color=blue] [shape=box]
     b [label="Weather\nAPI"] [color=blue][shape=box]
+    M [label="Location Picture\nAPI"][color=blue] [shape=box]
     sync [label="Location\nAPI" shape=plaintext ]
-    b -> sync  [dir="both"]
-    sync -> a [dir="both"]
+    sync -> b  [dir="RL"]
+    sync -> a [dir="LR"]
+    sync -> M [dir="LR"]
   }
 }
 ```
+
 
 ---
 :dog:
