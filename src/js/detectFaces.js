@@ -16,12 +16,16 @@ function hitIt(event){
 
 function loadLocation(){
     city = document.getElementById("searchTxt").value;
+    if (city != "") city = city[0].toUpperCase() + city.slice(1);
+  
     if(city=="") {
       var ipURL = "https://api.ipify.org/?format=json"
       request(ipURL, getIP)
     } else  {
       weatherURL="http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + weatherMapKey;
+      //picURL = "https://pixabay.com/api/?key=" + pixaKey + city;
       picURL = "https://pixabay.com/api/?key=" + pixaKey + city;
+      console.log(picURL)
       request(weatherURL, showWeather)
       request(picURL, locationPic)
     }}
