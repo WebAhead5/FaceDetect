@@ -14,6 +14,7 @@ function loadLocation(){
      else  {
          showWeather();
          locationPic();}
+
 }
 
 function showWeather(){
@@ -30,14 +31,16 @@ function showWeather(){
         })
         .then(function(weatherObj) {
             //city name
-         document.getElementById("info0").innerHTML = "<b>" + weatherObj.name + "</b>";
+         document.getElementById("info0").innerHTML = "<b>" + weatherObj.name[0].toUpperCase() + weatherObj.name.slice(1) + "</b>";
             // weather description
-          document.getElementById("info1").innerHTML = "<b>" + weatherObj.weather[0].description + "</b>";
+          document.getElementById("info1").innerHTML = "<b>" + weatherObj.weather[0].description[0].toUpperCase() + weatherObj.weather[0].description.slice(1) + "</b>";
           document.getElementById("info2").innerHTML = "<i>Humidity:</i> " + weatherObj.main.humidity + "%";
             // tempreture converted to F
-          document.getElementById("info3").innerHTML = "<i>Temp: </i>" + (Math.round(weatherObj.main.temp * (9/5) - 459.67)).toString() + " F";
-            //wind speed
-          document.getElementById("info4").innerHTML = "<i>Wind speed:<i> " + weatherObj.wind.speed + " m/s";
+          document.getElementById("info3").innerHTML = "<i>Current Temp: </i>" + (Math.round(weatherObj.main.temp * (9/5) - 459.67)).toString() + " F (" + Math.round((weatherObj.main.temp - 273.1)) + " C) ";
+          document.getElementById("info4").innerHTML = "<i>Max Temp: </i>" + (Math.round(weatherObj.main.temp_max * (9/5) - 459.67)).toString() + " F (" + Math.round((weatherObj.main.temp_max - 273.1)) + " C) ";  
+          document.getElementById("info5").innerHTML = "<i>Min Temp: </i>" + (Math.round(weatherObj.main.temp_min * (9/5) - 459.67)).toString() + " F (" + Math.round((weatherObj.main.temp_min - 273.1)) + " C) ";
+          //wind speed
+          document.getElementById("info6").innerHTML = "<i>Wind speed:<i> " + weatherObj.wind.speed + " m/s";
             //weather icon
           var weatherIcon=weatherObj.weather[0].icon;
           document.getElementById("conditionIcon").src="http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
@@ -50,7 +53,7 @@ function showWeather(){
           Long = weatherObj.coord.lon;
           Lat = weatherObj.coord.lat;
           console.log("location is: ", Lat, Long)
-          getMap()
+          getMap();
          // weatherValue=weatherObj.weather[0].value;
          // alert(weatherValue);
         })
@@ -100,7 +103,7 @@ function getLocation(ipAddress) {
 //morad's code
 function locationPic() {
   var pixaKey = "15724529-195ef5be27b1fe3bf39c5be31&q=";
-  var pixaUrl = "https://pixabay.com/api/?key=" + pixaKey + city + "&image_type=photo&pretty=true" ;
+  var pixaUrl = "https://pixabay.com/api/?key=" + pixaKey + city ;
   console.log(pixaUrl);
   // https://pixabay.com/api/?key=15724529-195ef5be27b1fe3bf39c5be31&q=haifa&image_type=photo&pretty=true
   var locPic = document.querySelector(".location");
@@ -121,34 +124,34 @@ function locationPic() {
   })
 }
 
-//Jake's giphy code
-var giphyKey;
-var url;
-function takeAction(){
-    if(document.getElementById("searchTxt").value == ""){
-        alert("Enter emotion");
-    }else{
-    var emotion = document.getElementById("searchTxt").value;
+// //Jake's giphy code
+// var giphyKey;
+// var url;
+// function takeAction(){
+//     if(document.getElementById("searchTxt").value == ""){
+//         alert("Enter emotion");
+//     }else{
+//     var emotion = document.getElementById("searchTxt").value;
     
-    url = "http://api.giphy.com/v1/gifs/search?q=" + emotion + "&api_key=" +  giphyKey;
-    console.losg("url is: ", url)
-    (function() {
-        fetch(url)
-        .then(function(data) {
-          return data.json();
-        })
-        .then(function(gifs) {
-          var randomImage = parseInt(Math.random()*Object.keys(gifs.data).length);
-          var gifDOM = document.querySelector(".gif"); 
-          var link = gifs.data[randomImage].images.downsized_medium.url; //grabs gif image from JSON
-          gifDOM.src = link; //changes DOM src to new link of gif
-        })
-        .catch(function(error) {
-          console.log(error);
-        })
-      })();
-    }
-    }
+//     url = "http://api.giphy.com/v1/gifs/search?q=" + emotion + "&api_key=" +  giphyKey;
+//     console.losg("url is: ", url)
+//     (function() {
+//         fetch(url)
+//         .then(function(data) {
+//           return data.json();
+//         })
+//         .then(function(gifs) {
+//           var randomImage = parseInt(Math.random()*Object.keys(gifs.data).length);
+//           var gifDOM = document.querySelector(".gif"); 
+//           var link = gifs.data[randomImage].images.downsized_medium.url; //grabs gif image from JSON
+//           gifDOM.src = link; //changes DOM src to new link of gif
+//         })
+//         .catch(function(error) {
+//           console.log(error);
+//         })
+//       })();
+//     }
+//     }
 
 
 
@@ -156,23 +159,23 @@ function takeAction(){
 function getMap() {
   console.log("GET MAP CALLED")
       // Initialize the platform object:
+
       var platform = new H.service.Platform({
         'apikey': 'f-3oYNVzXsvGjkldg4CkaCT2Wx46R-jir8pJ7SYVlCQ'
       });
 
+
       // Obtain the default map types from the platform object
       var maptypes = platform.createDefaultLayers();
-
-
-      //delete exisitng map object.
-
+      
+      document.getElementById('mapContainer').innerHTML = "";
 
       // Instantiate (and display) a map object:
       var map = new H.Map(
         document.getElementById('mapContainer'),
         maptypes.vector.normal.map,
         {
-          zoom: 10,
+          zoom: 8,
           center: { lng: Long, lat: Lat }
         });
 
@@ -185,10 +188,10 @@ function getMap() {
         var icon = new H.map.Icon(svgMarkup),
         coords = {lat: Lat, lng: Long},
         marker = new H.map.Marker(coords, {icon: icon});
-        console.log(coords)
 
         map.addObject(marker);
         map.setCenter(coords);
+      
 
 };
 
