@@ -39,9 +39,9 @@ function showWeather(){
           document.getElementById("info1").innerHTML = "<b>" + weatherObj.weather[0].description[0].toUpperCase() + weatherObj.weather[0].description.slice(1) + "</b>";
           document.getElementById("info2").innerHTML = "<i>Humidity:</i> " + weatherObj.main.humidity + "%";
             // tempreture converted to F
-          document.getElementById("info3").innerHTML = "<i>Current Temp: </i>" + (Math.round(weatherObj.main.temp * (9/5) - 459.67)).toString() + " F (" + Math.round((weatherObj.main.temp - 273.1)) + " C) ";
-          document.getElementById("info4").innerHTML = "<i>Max Temp: </i>" + (Math.round(weatherObj.main.temp_max * (9/5) - 459.67)).toString() + " F (" + Math.round((weatherObj.main.temp_max - 273.1)) + " C) ";  
-          document.getElementById("info5").innerHTML = "<i>Min Temp: </i>" + (Math.round(weatherObj.main.temp_min * (9/5) - 459.67)).toString() + " F (" + Math.round((weatherObj.main.temp_min - 273.1)) + " C) ";
+          document.getElementById("info3").innerHTML = "<i>Current Temp: </i>" + calcF(weatherObj.main.temp) + " (" + calcC(weatherObj.main.temp) + ")"; 
+          document.getElementById("info4").innerHTML = "<i>Max Temp: </i>" + calcF(weatherObj.main.temp_max) + " (" + calcC(weatherObj.main.temp_max) + ")";  
+          document.getElementById("info5").innerHTML = "<i>Min Temp: </i>" + calcF(weatherObj.main.temp_min) + " (" + calcC(weatherObj.main.temp_min) + ")"; 
           //wind speed
           document.getElementById("info6").innerHTML = "<i>Wind speed:<i> " + weatherObj.wind.speed + " m/s";
             //weather icon
@@ -116,12 +116,7 @@ function locationPic() {
     console.log(picLink)
   })
   .catch(function(error){
-<<<<<<< HEAD
     errorFound(error)
-=======
-    console.log(error);
-    locPic.src = "http://cdn.pixabay.com/photo/2015/03/01/21/44/bart-655318_960_720.png";
->>>>>>> master
   })
 }
 
@@ -188,3 +183,19 @@ function errorFound(error) {
 
 
 }
+
+
+function calcF(temp) {
+
+  return (Math.round(temp * (9/5) - 459.67)).toString() + "°F"
+
+}
+
+function calcC(temp) {
+
+  return  (Math.round(temp - 273.1)) + "°C"
+
+}
+
+
+
