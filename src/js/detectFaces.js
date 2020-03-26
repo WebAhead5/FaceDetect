@@ -111,8 +111,9 @@ function locationPic() {
   .then(function(pics){
     var randPic = parseInt(Math.random()*Object.keys(pics.hits).length);
     console.log(randPic)
-    var picLink = pics.hits[1].largeImageURL;
+    var picLink = pics.hits[randPic].largeImageURL;
     locPic.src = picLink;
+    console.log(picLink)
   })
   .catch(function(error){
     console.log(error);
