@@ -7,6 +7,11 @@ const pixaBayKey = "15724529-195ef5be27b1fe3bf39c5be31&q=";
 //khaled: weather key
 const weatherMapKey = "2ef6a42fb0c1fbf124ac800524fde470";
 
+function hitIt(event){
+    if (event.keyCode==13)
+        document.getElementById("searchBtn").click();
+}
+
 function loadLocation(){
     city = document.getElementById("searchTxt").value;
     if(city=="") {
@@ -14,7 +19,6 @@ function loadLocation(){
      else  {
          showWeather();
          locationPic();}
-
 }
 
 function showWeather(){
