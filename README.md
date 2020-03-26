@@ -28,7 +28,7 @@ Default infomation will be provided based on your current location (based on you
 
 ### The APIs Work Flow :cyclone:
 
-![The work flow](https://i.imgur.com/RsNoKKQ.png)
+![The work flow](https://i.imgur.com/UGgRPq0.png)
 ---
 ```graphviz
 digraph {
