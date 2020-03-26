@@ -171,8 +171,8 @@ function errorFound(error) {
   document.getElementById("info1").innerHTML = "<br><br>Sorry! City is not found!";
 
 //set default pics on error
-  document.getElementById("conditionIcon").src="../../res/img/punch.png"
-  document.querySelector(".location").src = "../../res/img/punch.png"
+  document.getElementById("conditionIcon").src="res/img/punch.png"
+  document.querySelector(".location").src = "res/img/punch.png"
 
 //Console Log Error
   console.log("ERROR IS:", error);
