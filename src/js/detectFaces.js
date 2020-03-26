@@ -76,7 +76,7 @@ function showWeather(){
        
     })
     .catch(function(error) {
-      errorFound()
+      errorFound(error)
     })
   };
 
