@@ -7,6 +7,11 @@ const pixaBayKey = "15724529-195ef5be27b1fe3bf39c5be31&q=";
 //khaled: weather key
 const weatherMapKey = "2ef6a42fb0c1fbf124ac800524fde470";
 
+function hitIt(event){
+    if (event.keyCode==13)
+        document.getElementById("searchBtn").click();
+}
+
 function loadLocation(){
     city = document.getElementById("searchTxt").value;
     if(city=="") {
@@ -20,7 +25,7 @@ function showWeather(){
     //weather url
     var url="http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + weatherMapKey;
     //location image url
-    var pixaUrl = "https://pixabay.com/api/?key=" + pixaBayKey + city + "&image_type=photo&pretty=true";
+    var pixaUrl = "http://pixabay.com/api/?key=" + pixaBayKey + city + "&image_type=photo&pretty=true";
     //weather function
     (function() {
         fetch(url)
@@ -111,7 +116,12 @@ function locationPic() {
     console.log(picLink)
   })
   .catch(function(error){
+<<<<<<< HEAD
     errorFound(error)
+=======
+    console.log(error);
+    locPic.src = "http://cdn.pixabay.com/photo/2015/03/01/21/44/bart-655318_960_720.png";
+>>>>>>> master
   })
 }
 
