@@ -8,11 +8,11 @@ The website is built in a way that the weather will be modified according to You
 However, the info will change according the city that you are searching for whenever a valid city name is inserted to the search bar. 
 
 
-### APIS USED 
+### APIS USED & Work Flow
 
 - GET USER IP: https://api.ipify.org
 - GET LOCATION FROM IP: http://api.ipstack.com/
-- GET WEATHER INFO: http://api.openweathermap.org
+- GET WEATHER INFO: http://api.openweathermap.org   ![The work flow](https://i.imgur.com/RavD7Ui.png)
 - GET LOCATION PICTURE: https://api.ipify.org/
 - GET LOCATION MAP: https://js.api.here.com
 ---
@@ -28,7 +28,7 @@ Default infomation will be provided based on your current location (based on you
 
 ### The APIs Work Flow :cyclone:
 
-![The work flow](https://i.imgur.com/RavD7Ui.png)
+
 ---
 ```graphviz
 digraph {
